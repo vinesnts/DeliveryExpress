@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="clienteAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.TelaClienteController">
+   <children>
+      <Pane fx:id="clientePane" prefHeight="500.0" prefWidth="800.0">
+         <children>
+            <ToolBar prefHeight="41.0" prefWidth="800.0">
+               <items>
+                <Button fx:id="sairClienteButton" mnemonicParsing="false" onAction="#logoutAction" prefHeight="29.0" prefWidth="53.0" text="Sair" />
+                  <MenuButton mnemonicParsing="false" text="Editar">
+                    <items>
+                      <MenuItem fx:id="charmAlterarEnderecoButton" mnemonicParsing="false" onAction="#chamarAlterarEnderecoAction" text="Alterar Endereço" />
+                      <MenuItem fx:id="chamarAlterarSenhaButton" mnemonicParsing="false" onAction="#chamarAlterarSenhaAction" text="Alterar Senha" />
+                        <MenuItem fx:id="chamarApagarContaButton" mnemonicParsing="false" onAction="#chamarApagarContaAction" text="Apagar Conta" />
+                    </items>
+                  </MenuButton>
+                  <Separator opacity="0.0" prefHeight="29.0" prefWidth="544.0" />
+                  <TextField fx:id="pessoaLogada" prefHeight="29.0" prefWidth="64.0" />
+                  <Button fx:id="mudarNomeButton" mnemonicParsing="false" onAction="#mudarNomeAction" prefHeight="29.0" prefWidth="37.0" text="OK" />
+               </items>
+            </ToolBar>
+            <Button fx:id="novoPedidoButton" layoutX="335.0" layoutY="74.0" mnemonicParsing="false" onAction="#chamarNovoPedidoAction" prefHeight="29.0" prefWidth="119.0" text="Novo Pedido" />
+            <ListView fx:id="pedidosList" layoutX="226.0" layoutY="202.0" prefHeight="250.0" prefWidth="337.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </ListView>
+            <Button fx:id="cancelarPedidoButton" layoutX="571.0" layoutY="202.0" mnemonicParsing="false" onAction="#cancelarPedidoAction" prefHeight="29.0" prefWidth="27.0" text="-" />
+            <ImageView fitHeight="52.0" fitWidth="236.0" layoutX="277.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/pedidosAtivos.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="atualizaEnderecoPane" prefHeight="500.0" prefWidth="800.0" visible="false">
+         <children>
+            <ToolBar layoutX="1.0" prefHeight="41.0" prefWidth="800.0">
+              <items>
+                <Button fx:id="sairAlterarEnderecoButton" mnemonicParsing="false" onAction="#sairAlterarEnderecoAction" text="Voltar" />
+              </items>
+            </ToolBar>
+            <GridPane layoutX="224.0" layoutY="190.0" prefHeight="120.0" prefWidth="353.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Numero:" GridPane.rowIndex="1" />
+                  <Label text="Rua:" />
+                  <Label text="Bairro:" GridPane.rowIndex="2" />
+                  <Label text="Cidade:" GridPane.rowIndex="3" />
+                  <TextField fx:id="ruaText" promptText="Digite a rua" GridPane.columnIndex="1" />
+                  <TextField fx:id="numeroText" promptText="Digite o numero da casa" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="bairroText" promptText="Digite o bairro" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="cidadeText" promptText="Digite a cidade" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+            <Button fx:id="atualizarEnderecoButton" layoutX="364.0" layoutY="364.0" mnemonicParsing="false" onAction="#atualizarEnderecoAction" text="Atualizar" />
+            <ImageView fitHeight="102.0" fitWidth="271.0" layoutX="266.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/atualizarEndereco.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="alterarSenhaPane" prefHeight="500.0" prefWidth="800.0" visible="false">
+         <children>
+            <ToolBar layoutX="1.0" prefHeight="41.0" prefWidth="800.0">
+               <items>
+                  <Button fx:id="sairAlterarSenhaButton" mnemonicParsing="false" onAction="#sairAlterarSenhaAction" text="Voltar" />
+               </items>
+            </ToolBar>
+            <GridPane layoutX="225.0" layoutY="193.0" prefHeight="114.0" prefWidth="353.0">
+               <children>
+                  <Label text="Nova senha:" GridPane.rowIndex="1" />
+                  <Label text="Senha Atual:" />
+                  <Label text="Repita a nova senha:" GridPane.rowIndex="2" />
+                  <PasswordField fx:id="senhaAtualText" GridPane.columnIndex="1" />
+                  <PasswordField fx:id="novaSenhaText" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <PasswordField fx:id="repitaNovaSenhaText" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="42.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <Button fx:id="confirmarAlterarSenhaButton" layoutX="367.0" layoutY="346.0" mnemonicParsing="false" onAction="#salvarNovaSenhaAction" text="Confirmar" />
+            <ImageView fitHeight="40.0" fitWidth="257.0" layoutX="284.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/alterarSenha.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="apagarContaPane" prefHeight="500.0" prefWidth="800.0" visible="false">
+         <children>
+            <ToolBar layoutX="1.0" prefHeight="41.0" prefWidth="800.0">
+               <items>
+                  <Button fx:id="sairApagarContaButton" mnemonicParsing="false" onAction="#sairApagarContaAction" text="Voltar" />
+               </items>
+            </ToolBar>
+            <GridPane layoutX="225.0" layoutY="201.0" prefHeight="82.0" prefWidth="353.0">
+               <children>
+                  <Label text="CPF:" />
+                  <Label text="Senha:" GridPane.rowIndex="1" />
+                  <TextField fx:id="CpfApagarContaButton" GridPane.columnIndex="1" />
+                  <PasswordField fx:id="senhaApagarContaText" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="42.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <Button fx:id="confirmarApagarContaButton" layoutX="361.0" layoutY="332.0" mnemonicParsing="false" onAction="#apagarContaAction" text="Confirmar" />
+            <ImageView fitHeight="47.0" fitWidth="257.0" layoutX="273.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/apagarConta.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

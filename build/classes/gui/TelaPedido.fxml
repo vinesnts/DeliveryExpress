@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="pedidoAnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.TelaPedidoController">
+   <children>
+      <Pane fx:id="pedidoPane" layoutX="1.0" prefHeight="500.0" prefWidth="800.0">
+         <children>
+            <ListView fx:id="cardapioList" layoutX="224.0" layoutY="150.0" prefHeight="264.0" prefWidth="344.0" />
+            <ToolBar prefHeight="41.0" prefWidth="800.0">
+              <items>
+                <Button fx:id="sairPedidoButton" mnemonicParsing="false" onAction="#sairPedidoAction" text="Voltar" />
+              </items>
+            </ToolBar>
+            <Button fx:id="adicionarAlimentoButton" layoutX="574.0" layoutY="151.0" mnemonicParsing="false" onAction="#adicionarAlimentoAction" prefHeight="25.0" prefWidth="25.0" text="+" />
+            <Spinner fx:id="quantidadeSpinner" amountToStepBy="1" initialValue="1" layoutX="525.0" layoutY="120.0" max="100" min="1" onMouseClicked="#incrementarQuantidade" prefHeight="25.0" prefWidth="73.0" />
+            <Label layoutX="479.0" layoutY="125.0" text="Quant.:" />
+            <Button fx:id="confirmarPedidoButton" layoutX="446.0" layoutY="421.0" mnemonicParsing="false" onAction="#confirmarPedidoAction" text="Confimar Pedido" />
+            <Label fx:id="precoTotalLabel" layoutX="225.0" layoutY="426.0" text="Preço Total: 0.0" />
+            <Button fx:id="removerAlimentoButton" layoutX="574.0" layoutY="189.0" mnemonicParsing="false" onAction="#removerAlimentoAction" prefHeight="25.0" prefWidth="25.0" text="-" />
+            <ImageView fitHeight="41.0" fitWidth="121.0" layoutX="335.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/menu.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

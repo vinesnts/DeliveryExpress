@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="funcionarioAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.TelaFuncionarioController">
+   <children>
+      <Pane fx:id="funcionarioPane" prefHeight="500.0" prefWidth="800.0">
+         <children>
+            <ImageView fitHeight="35.0" fitWidth="213.0" layoutX="303.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/pedidosAtivos.png" />
+               </image>
+            </ImageView>
+            <ToolBar prefHeight="41.0" prefWidth="800.0">
+               <items>
+                  <Button fx:id="sairFuncionarioButton" mnemonicParsing="false" onAction="#logoutFuncionarioAction" prefHeight="29.0" prefWidth="53.0" text="Sair" />
+                  <Button mnemonicParsing="false" onAction="#chamarAtualizarPrecosButton" prefHeight="28.0" prefWidth="113.0" text="Atualiza Menu" />
+                  <MenuButton fx:id="gerenteMenu" mnemonicParsing="false" text="Gerente" visible="false">
+                     <items>
+                        <MenuItem fx:id="admitirFuncionarioButton" mnemonicParsing="false" onAction="#admitirFuncionarioAction" text="Admitir Funcionário" />
+                        <MenuItem fx:id="demitirFuncionarioButton" mnemonicParsing="false" onAction="#demitirFuncionarioAction" text="Demitir Funcionário" />
+                     </items>
+                  </MenuButton>
+                  <Separator opacity="0.0" prefHeight="29.0" prefWidth="490.0" />
+                  <Button fx:id="ajudaButton" mnemonicParsing="false" onAction="#ajudaAction" prefWidth="28.0" text="?" />
+               </items>
+            </ToolBar>
+            <Button fx:id="novoAlimentoButton" layoutX="350.0" layoutY="71.0" mnemonicParsing="false" onAction="#chamarNovoAlimentoAction" prefHeight="29.0" prefWidth="119.0" text="Novo Alimento" />
+            <ListView fx:id="pedidoArea" layoutX="228.0" layoutY="182.0" prefHeight="200.0" prefWidth="362.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </ListView>
+            <Button fx:id="verPedidoButton" layoutX="367.0" layoutY="394.0" mnemonicParsing="false" onAction="#verPedidoAction" text="Ver Pedido" />
+            <Button fx:id="confirmarEntregaButton" layoutX="459.0" layoutY="393.0" mnemonicParsing="false" onAction="#confirmarEntregaAction" prefHeight="29.0" prefWidth="131.0" text="Confimar Entrega" />
+         </children>
+      </Pane>
+      <Pane fx:id="admitirPane" prefHeight="500.0" prefWidth="800.0" visible="false">
+         <children>
+            <ToolBar prefHeight="41.0" prefWidth="800.0">
+               <items>
+                  <Button fx:id="voltarFuncionarioButton" mnemonicParsing="false" onAction="#voltarFuncionarioAction" text="Voltar" />
+               </items>
+            </ToolBar>
+            <GridPane layoutX="244.0" layoutY="195.0" prefHeight="120.0" prefWidth="329.0">
+               <children>
+                  <Label text="Nome:" />
+                  <Label text="CPF:" GridPane.rowIndex="1" />
+                  <Label text="Senha:" GridPane.rowIndex="2" />
+                  <TextField fx:id="nomeAdmitirText" promptText="Digite o nome" GridPane.columnIndex="1" />
+                  <TextField fx:id="cpfAdmitirText" prefHeight="29.0" prefWidth="140.0" promptText="ex.: &quot;11111111111&quot;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <PasswordField fx:id="senhaAdmitirText" prefHeight="13.0" prefWidth="163.0" promptText="Digite a senha" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="166.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="210.0" minWidth="10.0" prefWidth="163.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <Button fx:id="admitirButton" layoutX="377.0" layoutY="358.0" mnemonicParsing="false" onAction="#admitirAction" text="Admitir" />
+            <ImageView fitHeight="50.0" fitWidth="337.0" layoutX="240.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/admitirFuncionario.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="demitirPane" prefHeight="500.0" prefWidth="800.0" visible="false">
+         <children>
+            <ToolBar prefHeight="41.0" prefWidth="800.0">
+               <items>
+                  <Button fx:id="voltarDemitirButton" mnemonicParsing="false" onAction="#voltarDemitirAction" text="Voltar" />
+               </items>
+            </ToolBar>
+            <GridPane layoutX="236.0" layoutY="216.0" prefHeight="50.0" prefWidth="329.0">
+               <children>
+                  <Label text="CPF:" />
+                  <TextField fx:id="cpfDemitirText" prefHeight="29.0" prefWidth="140.0" promptText="ex.: &quot;11111111111&quot;" GridPane.columnIndex="1" />
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="166.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="210.0" minWidth="10.0" prefWidth="163.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <Button fx:id="demitirButton" layoutX="369.0" layoutY="307.0" mnemonicParsing="false" onAction="#demitirAction" text="Demitir" />
+            <ImageView fitHeight="80.0" fitWidth="329.0" layoutX="236.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/demitirFuncionario.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="novoAlimentoPane" prefHeight="500.0" prefWidth="800.0" visible="false">
+         <children>
+            <ToolBar prefHeight="41.0" prefWidth="800.0">
+               <items>
+                  <Button fx:id="voltarAlimentoButton" mnemonicParsing="false" onAction="#voltarAlimentoAction" text="Voltar" />
+               </items>
+            </ToolBar>
+            <GridPane layoutX="236.0" layoutY="190.0" prefHeight="120.0" prefWidth="329.0">
+               <children>
+                  <Label text="Nome:" />
+                  <Label text="Preço:" GridPane.rowIndex="1" />
+                  <TextField fx:id="nomeAlimentoText" promptText="Digite o nome" GridPane.columnIndex="1" />
+                  <TextField fx:id="precoText" prefHeight="29.0" prefWidth="140.0" promptText="Use ponto, ex. 120.50" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <SplitMenuButton fx:id="tipoSelect" mnemonicParsing="false" text="Tipo" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <items>
+                      <MenuItem fx:id="comidaButton" mnemonicParsing="false" onAction="#comidaAction" text="Comida" />
+                      <MenuItem fx:id="bebidaButton" mnemonicParsing="false" onAction="#bebidaAction" text="Bebida" />
+                    </items>
+                  </SplitMenuButton>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="166.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="210.0" minWidth="10.0" prefWidth="163.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <Button fx:id="cadastrarAlimentoButton" layoutX="362.0" layoutY="345.0" mnemonicParsing="false" onAction="#cadastrarAlimentoAction" text="Cadastrar" />
+            <ImageView fitHeight="83.0" fitWidth="329.0" layoutX="236.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/cadastrarAlimento.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="detalhePedidoPane" prefHeight="500.0" prefWidth="800.0" visible="false">
+         <children>
+            <ListView fx:id="detalhePedidoArea" layoutX="219.0" layoutY="109.0" prefHeight="252.0" prefWidth="362.0" />
+            <ToolBar prefHeight="41.0" prefWidth="800.0">
+               <items>
+                  <Button fx:id="voltarPedidoDetalheButton" mnemonicParsing="false" onAction="#voltarPedidoDetalheButton" text="Voltar" />
+               </items>
+            </ToolBar>
+            <Button layoutX="337.0" layoutY="421.0" mnemonicParsing="false" onAction="#confirmarEntregaAction" text="Confirmar Pedido" />
+            <TextArea fx:id="enderecoArea" layoutX="219.0" layoutY="369.0" prefHeight="29.0" prefWidth="362.0" />
+            <ImageView fitHeight="30.0" fitWidth="224.0" layoutX="288.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/itensDoPedido.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="atualizarMenuPane" prefHeight="500.0" prefWidth="800.0" visible="false">
+         <children>
+            <ToolBar prefHeight="40.0" prefWidth="800.0">
+              <items>
+                <Button fx:id="voltarAtualizarMenuButton" mnemonicParsing="false" onAction="#voltarAtualizarMenuAction" text="Voltar" />
+              </items>
+            </ToolBar>
+            <ListView fx:id="menuArea" layoutX="219.0" layoutY="238.0" prefHeight="200.0" prefWidth="362.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </ListView>
+            <ImageView fitHeight="41.0" fitWidth="262.0" layoutX="269.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/atualizarMenu.png" />
+               </image>
+            </ImageView>
+            <GridPane layoutX="216.0" layoutY="129.0" prefHeight="102.0" prefWidth="368.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" />
+              </rowConstraints>
+               <children>
+                  <Label text="Nome:" />
+                  <Label text="Preço:" GridPane.rowIndex="1" />
+                  <TextField fx:id="atualizarNomeAlimentoText" GridPane.columnIndex="1" />
+                  <TextField fx:id="atualizarPrecoAlimentoText" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button fx:id="editarAlimentoButton" mnemonicParsing="false" onAction="#editarAlimentoAction" text="Editar" GridPane.rowIndex="2" />
+                  <Button fx:id="concluirEdicaoButton" mnemonicParsing="false" onAction="#concluirEdicaoAction" text="Salvar" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
